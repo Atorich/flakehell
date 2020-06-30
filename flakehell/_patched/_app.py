@@ -69,7 +69,10 @@ class FlakeHellApplication(Application):
         return dict()
 
     @staticmethod
-    def extract_toml_config_path(argv: List[str]) -> Tuple[Optional[Path], List[str]]:
+    def extract_toml_config_path(config_finder, argv: List[str]) -> Tuple[Optional[Path], List[str]]:
+        if config_finder and config_finder.config_file:
+            return Path(config_finder.local_directory, config_finder.config_file), argv
+        
         if not argv:
             return None, argv
 
