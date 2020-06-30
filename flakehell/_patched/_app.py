@@ -101,7 +101,7 @@ class FlakeHellApplication(Application):
 
         # if passed `--config` with path to TOML-config, we should extract it
         # before passing into flake8 mechanisms
-        config_path, argv = self.extract_toml_config_path(argv=argv)
+        config_path, argv = self.extract_toml_config_path(config_finder=config_finder, argv=argv)
 
         # make default config
         config, _ = self.option_manager.parse_args([])
